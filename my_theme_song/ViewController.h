@@ -7,9 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
+#import <CoreMotion/CoreMotion.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<MPMediaPickerControllerDelegate>
 
+@property (weak, nonatomic) IBOutlet UILabel *themeSongLabel;
+@property (weak, nonatomic) IBOutlet UILabel *artistLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *artworkImage;
+- (IBAction)startButton:(id)sender;
+- (IBAction)propertiesButton:(id)sender;
 
 @end
 

@@ -14,6 +14,8 @@
 		76598A7F1ABD3E8C0017F7C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76598A7E1ABD3E8C0017F7C7 /* Images.xcassets */; };
 		76598A821ABD3E8D0017F7C7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76598A801ABD3E8D0017F7C7 /* LaunchScreen.xib */; };
 		76598A8E1ABD3E8D0017F7C7 /* my_theme_songTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 76598A8D1ABD3E8D0017F7C7 /* my_theme_songTests.m */; };
+		76598A981ABD57520017F7C7 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76598A971ABD57520017F7C7 /* MediaPlayer.framework */; };
+		76598A9A1ABD5EFB0017F7C7 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76598A991ABD5EFB0017F7C7 /* CoreMotion.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,8 @@
 		76598A871ABD3E8D0017F7C7 /* my_theme_songTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = my_theme_songTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		76598A8C1ABD3E8D0017F7C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76598A8D1ABD3E8D0017F7C7 /* my_theme_songTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = my_theme_songTests.m; sourceTree = "<group>"; };
+		76598A971ABD57520017F7C7 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		76598A991ABD5EFB0017F7C7 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +51,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76598A9A1ABD5EFB0017F7C7 /* CoreMotion.framework in Frameworks */,
+				76598A981ABD57520017F7C7 /* MediaPlayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +69,8 @@
 		76598A651ABD3E8C0017F7C7 = {
 			isa = PBXGroup;
 			children = (
+				76598A991ABD5EFB0017F7C7 /* CoreMotion.framework */,
+				76598A971ABD57520017F7C7 /* MediaPlayer.framework */,
 				76598A701ABD3E8C0017F7C7 /* my_theme_song */,
 				76598A8A1ABD3E8D0017F7C7 /* my_theme_songTests */,
 				76598A6F1ABD3E8C0017F7C7 /* Products */,
@@ -346,6 +354,7 @@
 				INFOPLIST_FILE = my_theme_song/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -356,6 +365,7 @@
 				INFOPLIST_FILE = my_theme_song/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
