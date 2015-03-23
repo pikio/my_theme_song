@@ -28,6 +28,25 @@ const int PAUSE_COUNT_VALUE = 5;
     
     self.player = [MPMusicPlayerController applicationMusicPlayer];
     
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
+    //設定を読み込む
+    NSString *persistentId = [ud stringForKey:@"PersistentId"];
+    if(persistentId != nil){
+        MPMediaQuery *query = [MPMediaQuery albumsQuery];
+        [query addFilterPredicate:[MPMediaPropertyPredicate predicateWithValue:persistentId forProperty: MPMediaItemPropertyPersistentID]];
+        NSArray *albumlists = query.collections;
+        for(MPMediaItemCollection *albumlist in albumlists){
+            [self.player setQueueWithItemCollection:albumlist];
+            
+            MPMediaItem *item = [albumlist representativeItem];
+            self.themeSongLabel.text = [item valueForProperty: MPMediaItemPropertyTitle];
+            self.artistLabel.text = [item valueForProperty: MPMediaItemPropertyArtist];
+            MPMediaItemArtwork *artwork = [item valueForProperty:MPMediaItemPropertyArtwork];
+            UIImage *image = [artwork imageWithSize:artwork.bounds.size];
+            self.artworkImage.image = image;
+        }
+    }
+    
     self.pedometer = [[CMPedometer alloc]init];
     BOOL check = [self confirmCMPedometer];
     if(check){
@@ -65,6 +84,10 @@ const int PAUSE_COUNT_VALUE = 5;
     MPMediaItemArtwork *artwork = [item valueForProperty:MPMediaItemPropertyArtwork];
     UIImage *image = [artwork imageWithSize:artwork.bounds.size];
     self.artworkImage.image = image;
+    
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
+    [ud setObject:[item valueForProperty:MPMediaItemPropertyPersistentID] forKey:@"PersistentId"];
+    
 }
 
 -(void)mediaPickerDidCancel:(MPMediaPickerController *)mediaPicker{
