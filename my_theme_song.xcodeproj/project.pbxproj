@@ -176,6 +176,11 @@
 				TargetAttributes = {
 					76598A6D1ABD3E8C0017F7C7 = {
 						CreatedOnToolsVersion = 6.2;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					76598A861ABD3E8D0017F7C7 = {
 						CreatedOnToolsVersion = 6.2;
@@ -422,6 +427,7 @@
 				76598A931ABD3E8D0017F7C7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		76598A941ABD3E8D0017F7C7 /* Build configuration list for PBXNativeTarget "my_theme_songTests" */ = {
 			isa = XCConfigurationList;
@@ -430,6 +436,7 @@
 				76598A961ABD3E8D0017F7C7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

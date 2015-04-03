@@ -61,13 +61,58 @@
                                     <action selector="startButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="7s0-AO-GPG"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="activity" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FMv-l9-iH5">
+                                <rect key="frame" x="238" y="461" width="125" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="phX-MF-aYb"/>
+                                    <constraint firstAttribute="width" constant="125" id="rhj-5y-NNp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RRa-rD-2Rb">
+                                <rect key="frame" x="150" y="495" width="300" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="Aeu-rb-YxF"/>
+                                    <constraint firstAttribute="height" constant="21" id="Qy9-Ci-eaR"/>
+                                    <constraint firstAttribute="width" constant="125" id="pZo-Ml-UYA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="pZo-Ml-UYA"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sig-7O-DxY">
+                                <rect key="frame" x="150" y="529" width="300" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="2C6-Y1-UkY"/>
+                                    <constraint firstAttribute="width" constant="125" id="YqI-MG-M0w"/>
+                                    <constraint firstAttribute="width" constant="300" id="ggS-CQ-SWD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="YqI-MG-M0w"/>
+                                    </mask>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="dPw-dx-wBh" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="6gN-KS-gDZ"/>
+                            <constraint firstAttribute="centerX" secondItem="FMv-l9-iH5" secondAttribute="centerX" id="6tc-nL-weo"/>
                             <constraint firstAttribute="centerX" secondItem="4JR-S6-mQ2" secondAttribute="centerX" id="7Zc-zd-4xm"/>
+                            <constraint firstAttribute="centerX" secondItem="RRa-rD-2Rb" secondAttribute="centerX" id="9x9-ZE-LtL"/>
                             <constraint firstAttribute="trailingMargin" secondItem="GlN-gh-v8E" secondAttribute="trailing" constant="10" id="Ecc-Z1-Scn"/>
                             <constraint firstItem="XPI-RE-bB9" firstAttribute="top" secondItem="dPw-dx-wBh" secondAttribute="bottom" constant="19" id="FPm-HT-wWN"/>
+                            <constraint firstAttribute="centerX" secondItem="Sig-7O-DxY" secondAttribute="centerX" id="Iln-xv-sxM"/>
                             <constraint firstItem="XPI-RE-bB9" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Lpq-VT-G8s"/>
                             <constraint firstAttribute="trailing" secondItem="XPI-RE-bB9" secondAttribute="trailing" id="NIG-fY-Qta"/>
                             <constraint firstItem="GlN-gh-v8E" firstAttribute="top" secondItem="YuX-WB-mbg" secondAttribute="bottom" constant="20" id="Snk-8B-J42"/>
@@ -75,10 +120,13 @@
                             <constraint firstItem="4JR-S6-mQ2" firstAttribute="top" secondItem="XPI-RE-bB9" secondAttribute="bottom" constant="61" id="cVB-E1-Ycn"/>
                             <constraint firstAttribute="centerX" secondItem="dPw-dx-wBh" secondAttribute="centerX" id="d9i-6t-BNr"/>
                             <constraint firstAttribute="centerX" secondItem="XPI-RE-bB9" secondAttribute="centerX" id="jS1-et-c5v"/>
+                            <constraint firstItem="RRa-rD-2Rb" firstAttribute="top" secondItem="FMv-l9-iH5" secondAttribute="bottom" constant="13" id="jci-T7-1YB"/>
                             <constraint firstItem="mqV-9I-Mme" firstAttribute="top" secondItem="4JR-S6-mQ2" secondAttribute="bottom" constant="14" id="mSn-xm-4Gd"/>
                             <constraint firstAttribute="trailing" secondItem="dPw-dx-wBh" secondAttribute="trailing" id="mfs-sv-vjc"/>
+                            <constraint firstItem="Sig-7O-DxY" firstAttribute="top" secondItem="RRa-rD-2Rb" secondAttribute="bottom" constant="13" id="sd5-0C-oRR"/>
                             <constraint firstAttribute="centerX" secondItem="4JR-S6-mQ2" secondAttribute="centerX" id="squ-Xh-qZE"/>
                             <constraint firstAttribute="centerX" secondItem="mqV-9I-Mme" secondAttribute="centerX" id="tAY-Bf-Y29"/>
+                            <constraint firstItem="FMv-l9-iH5" firstAttribute="top" secondItem="mqV-9I-Mme" secondAttribute="bottom" constant="17" id="zv7-6g-fJC"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -87,6 +135,9 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="activityDate2Label" destination="Sig-7O-DxY" id="eOF-ZF-MRv"/>
+                        <outlet property="activityDateLabel" destination="RRa-rD-2Rb" id="5cb-HL-ZMJ"/>
+                        <outlet property="activityLabel" destination="FMv-l9-iH5" id="ljt-D3-5uh"/>
                         <outlet property="artistLabel" destination="XPI-RE-bB9" id="8VW-Gc-wh2"/>
                         <outlet property="artworkImage" destination="4JR-S6-mQ2" id="K70-8o-EYx"/>
                         <outlet property="themeSongLabel" destination="dPw-dx-wBh" id="adJ-mC-9ch"/>

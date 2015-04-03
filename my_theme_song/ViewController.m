@@ -12,19 +12,24 @@
 @property MPMusicPlayerController* player;
 @property CMPedometer* pedometer;
 @property NSTimer* timer;
+@property CMMotionActivityManager* activityManager;
 @property int countUp;
 
 @end
 
 @implementation ViewController
 
-const int PAUSE_COUNT_VALUE = 5;
+const int PAUSE_COUNT_VALUE = 2;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.themeSongLabel.textAlignment = NSTextAlignmentCenter;
     self.artistLabel.textAlignment = NSTextAlignmentCenter;
+    self.activityLabel.textAlignment = NSTextAlignmentCenter;
+    
+    self.activityDateLabel.textAlignment = NSTextAlignmentCenter;
+    self.activityDate2Label.textAlignment = NSTextAlignmentCenter;
     
     self.player = [MPMusicPlayerController applicationMusicPlayer];
     
@@ -44,6 +49,12 @@ const int PAUSE_COUNT_VALUE = 5;
             MPMediaItemArtwork *artwork = [item valueForProperty:MPMediaItemPropertyArtwork];
             UIImage *image = [artwork imageWithSize:artwork.bounds.size];
             self.artworkImage.image = image;
+            
+            AVAudioSession *session = [AVAudioSession sharedInstance];
+            //ロック時も再生のカテゴリを指定
+            [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+            //オーディオセッションを有効化
+            [session setActive:YES error:nil];
         }
     }
     
@@ -51,6 +62,53 @@ const int PAUSE_COUNT_VALUE = 5;
     BOOL check = [self confirmCMPedometer];
     if(check){
         [self startPedometer];
+    }
+    
+    if([CMMotionActivityManager isActivityAvailable]){
+        self.activityManager = [[CMMotionActivityManager alloc] init];
+        
+        [self.activityManager startActivityUpdatesToQueue:[NSOperationQueue mainQueue] withHandler:^(CMMotionActivity *activity){
+            if(activity.stationary){
+                self.activityLabel.text = @"停止中";
+                [self.player pause];
+            }
+            else{
+                if(activity.confidence == CMMotionActivityConfidenceMedium
+                || activity.confidence == CMMotionActivityConfidenceHigh){
+                }
+                
+                if(activity.walking){
+                    self.activityLabel.text = @"歩いてる";
+                    if(! self.checkMusicPlay){
+                        [self.player play];
+                    }
+                    self.countUp = 0;
+                }
+                else if(activity.running){
+                    self.activityLabel.text = @"走ってる";
+                    if(! self.checkMusicPlay){
+                        [self.player play];
+                    }
+                    self.countUp = 0;
+                }
+                else if(activity.automotive){
+                    self.activityLabel.text = @"自動車";
+                    if(! self.checkMusicPlay){
+                        [self.player play];
+                    }
+                    self.countUp = 0;
+                }
+                else if(activity.unknown){
+                    self.activityLabel.text = @"不明";
+                }
+            }
+            
+            NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+            NSString *startDateString = [dateFormatter stringFromDate:activity.startDate];
+            self.activityDateLabel.text = startDateString;
+        }];
+        
     }
     
     self.countUp = 0;
@@ -85,6 +143,12 @@ const int PAUSE_COUNT_VALUE = 5;
     UIImage *image = [artwork imageWithSize:artwork.bounds.size];
     self.artworkImage.image = image;
     
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    //ロック時も再生のカテゴリを指定
+    [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+    //オーディオセッションを有効化
+    [session setActive:YES error:nil];
+    
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
     [ud setObject:[item valueForProperty:MPMediaItemPropertyPersistentID] forKey:@"PersistentId"];
     
@@ -113,10 +177,20 @@ const int PAUSE_COUNT_VALUE = 5;
     [self.pedometer startPedometerUpdatesFromDate:[NSDate date]
                                 withHandler:^(CMPedometerData *pedometerData, NSError *error) {
                                     dispatch_async(dispatch_get_main_queue(), ^{
-                                        if(! self.checkMusicPlay){
-                                            [self.player play];
-                                        }
+
                                         self.countUp = 0;
+                                        
+                                        
+                                        // 日時取得のためにFormatを設定
+                                        NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
+                                        [outputFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+                                        // 開始日時
+                                        NSString* startDate = [outputFormatter stringFromDate:pedometerData.startDate];
+                                        //終了日時
+                                        NSString *endDate = [outputFormatter stringFromDate:pedometerData.endDate];
+                                        
+                                        self.activityDate2Label.text = endDate;
+
                                     });
                                     
                                 }];
@@ -127,7 +201,7 @@ const int PAUSE_COUNT_VALUE = 5;
         self.countUp++;
         
         if(self.countUp > PAUSE_COUNT_VALUE){
-            [self.player pause];
+            //[self.player pause];
         }
     }
 }
