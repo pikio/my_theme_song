@@ -20,7 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *activityDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *activityDate2Label;
 - (IBAction)startButton:(id)sender;
-- (IBAction)propertiesButton:(id)sender;
+- (IBAction)propertiesButton2:(id)sender;
 
 @end
 

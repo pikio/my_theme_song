@@ -123,7 +123,7 @@ const int PAUSE_COUNT_VALUE = 2;
 - (IBAction)startButton:(id)sender {
 }
 
-- (IBAction)propertiesButton:(id)sender {
+- (IBAction)propertiesButton2:(id)sender {
     MPMediaPickerController *picker = [[MPMediaPickerController alloc] init];
     picker.delegate = self;
     picker.allowsPickingMultipleItems = NO;
